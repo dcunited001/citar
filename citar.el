@@ -203,7 +203,6 @@ and optional arguments on the string value."
 
 ;; Indicator defstruct
 
-;;;###autoload
 (cl-defstruct
  (citar-indicator (:constructor citar-indicator-create)
                   (:copier nil))
@@ -240,28 +239,32 @@ in some cases when using icons.")
   :documentation
   "A compiled version of `function' used during processing."))
 
+;;;###autoload
+(defalias 'make-citar-indicator 'citar-indicator-create
+  "Create a Citar Indicator.")
+
 ;; Indicator specs
 
 (defvar citar-indicator-files
-   (citar-indicator-create
-    :symbol "F"
-    :function #'citar-has-files
-    :tag "has:files"))
+  (make-citar-indicator
+   :symbol "F"
+   :function #'citar-has-files
+   :tag "has:files"))
 
 (defvar citar-indicator-links
-   (citar-indicator-create
+   (make-citar-indicator
     :symbol "L"
     :function #'citar-has-links
     :tag "has:links"))
 
 (defvar citar-indicator-notes
-  (citar-indicator-create
+  (make-citar-indicator
    :symbol "N"
    :function #'citar-has-notes
    :tag "has:notes"))
 
 (defvar citar-indicator-cited
-  (citar-indicator-create
+  (make-citar-indicator
    :symbol "C"
    :function #'citar-is-cited
    :tag "is:cited"))

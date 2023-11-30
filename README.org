@@ -240,7 +240,7 @@ Here's an example indicator definition incorporating icons:
 
 #+begin_src emacs-lisp
 (defvar citar-indicator-notes-icons
-  (citar-indicator-create
+  (make-citar-indicator
    :symbol (all-the-icons-material
             "speaker_notes"
             :face 'all-the-icons-blue
